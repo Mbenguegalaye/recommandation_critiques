@@ -41,14 +41,19 @@ get_similar_reviews(critique_id, top_n=5, use_rating=False, rating_weight=0.5)
 ```
 
 **Paramètres :**
-
-**critique_id** : ID de la critique de référence
-**top_n** : nombre de critiques à retourner
-**use_rating** : si True, pondère la similarité selon la note
-**rating_weight** : poids de la note dans le score combiné (0 à 1)
+ - **critique_id** : ID de la critique de référence
+ - **top_n** : nombre de critiques à retourner
+ - **use_rating** : si True, pondère la similarité selon la note
+ - **rating_weight** : poids de la note dans le score combiné (0 à 1)
 
 La fonction retourne un DataFrame contenant la critique d’entrée et les critiques similaires, triées par similarité puis par popularité.
 
+**Pourquoi critique_id comme entrée ?**
+La fonction prend en entrée **l’ID d’une critique** plutôt que son texte brut, car :
+  - Cela permet de **retrouver automatiquement le film concerné** et de limiter la recherche aux critiques de ce même film.
+  - On garantit ainsi que les recommandations sont pertinentes dans le contexte du film (et qu’il n’y a pas de mélange entre films différents).
+  - L’ID donne aussi accès facilement aux métadonnées de la critique (film, note, likes), ce qui enrichit les résultats affichés.
+    
 ---
 
 ## 4️⃣ Exemple d’utilisation
