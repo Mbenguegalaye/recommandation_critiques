@@ -3,6 +3,18 @@ Système de recommandation de critiques de films basé sur TF-IDF et similarité
 
 ---
 
+## Sommaire
+- [Contexte / Objectif](#1️⃣-contexte--objectif)
+- [Préparation des données](#2️⃣-préparation-des-données)
+- [Fonction de recommandation](#3️⃣-fonction-de-recommandation)
+- [Exemple d’utilisation](#4️⃣-exemple-dutilisation)
+- [System Design](#5️⃣-system-design)
+- [Installation et utilisation](#6️⃣-installation-et-utilisation)
+- [Option Notebook](#7️⃣-option-notebook)
+- [Extensions possibles](#8️⃣-extensions-possibles)
+
+---
+
 ## 1️⃣ Contexte / Objectif
 Ce projet permet à un utilisateur de voir, lorsqu’il lit une critique, les critiques les plus similaires pour le **même film**, avec la possibilité de pondérer par note et de trier par popularité (likes).
 
@@ -12,11 +24,11 @@ L’algorithme se base sur la similarité de contenu des critiques pour faire de
 
 ## 2️⃣ Préparation des données
 
-Les critiques sont chargées depuis des fichiers CSV (fightclub_critiques.csv, interstellar_critiques.csv) et combinées dans un seul DataFrame.
-Les lignes où review_content est manquant ont été supprimées, car cette colonne est clé pour la recommandation.
-review_title contient beaucoup de valeurs manquantes et est optionnelle : elle est conservée pour affichage ou enrichissement ultérieur, mais pas intégrée au pipeline principal.
-Les textes sont **nettoyés** via la fonction clean_text (suppression HTML et passage en minuscules) et stockés dans la colonne clean_review.
-Un **TF-IDF** est calculé sur clean_review pour représenter chaque critique.
+- Les critiques sont chargées depuis des fichiers CSV (fightclub_critiques.csv, interstellar_critiques.csv) et combinées dans un seul DataFrame.
+- Les lignes où review_content est manquant ont été supprimées, car cette colonne est clé pour la recommandation.
+- review_title contient beaucoup de valeurs manquantes et est optionnelle : elle est conservée pour affichage ou enrichissement ultérieur, mais pas intégrée au pipeline   principal.
+- Les textes sont **nettoyés** via la fonction clean_text (suppression HTML et passage en minuscules) et stockés dans la colonne clean_review.
+- Un **TF-IDF** est calculé sur clean_review pour représenter chaque critique.
 
 ---
 
@@ -73,7 +85,7 @@ print(result)
 
 ## 6️⃣ Installation et utilisation
 
-```python
+```bash
 # 1️ Cloner le repository
 git clone https://github.com/<votre-utilisateur>/recommandation_critiques.git
 cd recommandation_critiques
@@ -123,3 +135,8 @@ Utiliser des embeddings sémantiques (SBERT/OpenAI) pour une meilleure compréhe
 Ajouter des filtres par genre, année ou utilisateur.
 Pré-calculer et stocker la matrice TF-IDF pour accélérer les recommandations sur un grand nombre de critiques.
 Intégrer la recommandation dans un frontend web pour afficher directement les critiques similaires lors de la lecture.
+
+---
+
+## Licence
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d’informations.
